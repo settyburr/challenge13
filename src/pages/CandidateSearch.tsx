@@ -12,7 +12,7 @@ interface Candidate {
 }
 
 const CandidateSearch: React.FC = () => {
-  const [username, setUsername] = useState<string>(''); // Dynamic username input
+  const [username, setUsername] = useState<string>('');
   const [candidate, setCandidate] = useState<Candidate | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -28,6 +28,7 @@ const CandidateSearch: React.FC = () => {
 
     try {
       const data = await searchGithubUser(username.trim()); 
+      console.log(import.meta.env.VITE_GITHUB_TOKEN)
       setCandidate({
         name: data.name || 'No Name Available',
         username: data.login,

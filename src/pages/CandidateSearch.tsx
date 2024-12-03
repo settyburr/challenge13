@@ -42,13 +42,14 @@ const CandidateSearch: React.FC = () => {
     fetchCandidate();
   }, []);
 
-  const savedCandidate = () => {
+  const saveCandidate = () => {
     if(candidate) {
-      const savedCandidate = JSON.parse(localStorage.getItem('savedCandidates') || '[]');
-      localStorage.setItem('savedCandidates', JSON.stringify([...SavedCandidates, candidate]));
+      const savedCandidates = JSON.parse(localStorage.getItem('savedCandidates') || '[]');
+      localStorage.setItem('savedCandidates', JSON.stringify([...savedCandidates, candidate]));
       alert('Candidate saved!');
     }
   };
+  
   return (
     <div>
       {candidate ? (
